@@ -1,111 +1,89 @@
 ---
+title: /vrg/ Archive
 toc: false
 ---
 
-<div class="hero">
-  <h1>Vrg Archive</h1>
-  <h2>Welcome to your new app! Edit&nbsp;<code style="font-size: 90%;">src/index.md</code> to change this page.</h2>
-  <a href="https://observablehq.com/framework/getting-started">Get started<span style="display: inline-block; margin-left: 0.25rem;">↗︎</span></a>
+# /vrg/ Archive
+
+Welcome to the archive of Virtual Reality General threads from 4chan's /vg/ board.
+
+While the [b4k archive](https://b4k.dev) also has the /vg/ archived, it's slow
+and is missing data before ~august 2019. Thanks to an anon from Bibliotheca
+Anonoma, I got a copy of the text archive that goes back all the way to the
+first thread in ~2016. And thanks to the industrial revolution and its
+consequences, you can actually query the entire archive pretty efficiently in
+your browser.
+
+I don't have thumbnails or images (yet), but I'm working on it. Until then,
+enjoy the data.
+
+<div class="warning">All queries in your browser, which means you'll download a
+fair amount (~100MB) of data. So probably don't browse this your phone.</div>
+
+## Pages
+
+<div class="grid grid-cols-3">
+  <a class="card" href="thread-browser">
+    <h2>Thread Browser</h2>
+    <p>Browse old threads in a somewhat faithful format.</p>
+  </a>
+  <a class="card" href="substring-search">
+      <h2>Substring Search</h2>
+      <p>See how freqently certain substrings occur in the posts over time, a la google's ngram thing.</p>
+  </a>
+  <a class="card" href="full-text-search">
+      <h2>Full-text Search</h2>
+      <p>Search posts with an inverted index. Freakishly fast.</p>
+  </a>
 </div>
 
-<div class="grid grid-cols-2" style="grid-auto-rows: 504px;">
-  <div class="card">${
-    resize((width) => Plot.plot({
-      title: "Your awesomeness over time 🚀",
-      subtitle: "Up and to the right!",
-      width,
-      y: {grid: true, label: "Awesomeness"},
-      marks: [
-        Plot.ruleY([0]),
-        Plot.lineY(aapl, {x: "Date", y: "Close", tip: true})
-      ]
-    }))
-  }</div>
-  <div class="card">${
-    resize((width) => Plot.plot({
-      title: "How big are penguins, anyway? 🐧",
-      width,
-      grid: true,
-      x: {label: "Body mass (g)"},
-      y: {label: "Flipper length (mm)"},
-      color: {legend: true},
-      marks: [
-        Plot.linearRegressionY(penguins, {x: "body_mass_g", y: "flipper_length_mm", stroke: "species"}),
-        Plot.dot(penguins, {x: "body_mass_g", y: "flipper_length_mm", stroke: "species", tip: true})
-      ]
-    }))
-  }</div>
-</div>
+```js
+const archive_href = FileAttachment("data/vrgarchive.parquet").href;
+```
 
----
+## FAQ
 
-## Next steps
+### wtf is this
 
-Here are some ideas of things you could try…
+it's an archive of [/vrg/](https://boards.4chan.org/vg/catalog#s=vrg) with a
+bunch of javascript so you can query it efficiently in your browser.
 
-<div class="grid grid-cols-4">
-  <div class="card">
-    Chart your own data using <a href="https://observablehq.com/framework/lib/plot"><code>Plot</code></a> and <a href="https://observablehq.com/framework/files"><code>FileAttachment</code></a>. Make it responsive using <a href="https://observablehq.com/framework/javascript#resize(render)"><code>resize</code></a>.
-  </div>
-  <div class="card">
-    Create a <a href="https://observablehq.com/framework/project-structure">new page</a> by adding a Markdown file (<code>whatever.md</code>) to the <code>src</code> folder.
-  </div>
-  <div class="card">
-    Add a drop-down menu using <a href="https://observablehq.com/framework/inputs/select"><code>Inputs.select</code></a> and use it to filter the data shown in a chart.
-  </div>
-  <div class="card">
-    Write a <a href="https://observablehq.com/framework/loaders">data loader</a> that queries a local database or API, generating a data snapshot on build.
-  </div>
-  <div class="card">
-    Import a <a href="https://observablehq.com/framework/imports">recommended library</a> from npm, such as <a href="https://observablehq.com/framework/lib/leaflet">Leaflet</a>, <a href="https://observablehq.com/framework/lib/dot">GraphViz</a>, <a href="https://observablehq.com/framework/lib/tex">TeX</a>, or <a href="https://observablehq.com/framework/lib/duckdb">DuckDB</a>.
-  </div>
-  <div class="card">
-    Ask for help, or share your work or ideas, on our <a href="https://github.com/observablehq/framework/discussions">GitHub discussions</a>.
-  </div>
-  <div class="card">
-    Visit <a href="https://github.com/observablehq/framework">Framework on GitHub</a> and give us a star. Or file an issue if you’ve found a bug!
-  </div>
-</div>
+### Where did you get the archive data?
 
-<style>
+Data after august 2019 is scraped from b4k, and the older data is from an anon
+on the Bibliotheca Anonoma matrix channel who happened to have a private
+archiver. Thanks anon for uploading it for me.
 
-.hero {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-family: var(--sans-serif);
-  margin: 4rem 0 8rem;
-  text-wrap: balance;
-  text-align: center;
-}
+### Where are the images?
 
-.hero h1 {
-  margin: 1rem 0;
-  padding: 1rem 0;
-  max-width: none;
-  font-size: 14vw;
-  font-weight: 900;
-  line-height: 1;
-  background: linear-gradient(30deg, var(--theme-foreground-focus), currentColor);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
+Don't have them yet, but I'm working on it. 2 more weeks.
 
-.hero h2 {
-  margin: 0;
-  max-width: 34em;
-  font-size: 20px;
-  font-style: initial;
-  font-weight: 500;
-  line-height: 1.5;
-  color: var(--theme-foreground-muted);
-}
+### Can I get the raw data?
 
-@media (min-width: 640px) {
-  .hero h1 {
-    font-size: 90px;
-  }
-}
+Yeah, download the ${html`<a href=${archive_href}>vrgarchive.parquet</a>`} file. It's not quite
+raw as from the 4chan API, but it is easier to query and it's only ~90MB or so.
 
-</style>
+### How is the data so small?
+
+The data compresses extremely well with ZSTD and parquet. The uncompresed data is ~1.5GB, but
+I guess after all these years we've only posted ~80MB of insightful, original text.
+
+### How does it work?
+
+This site uses [Observable Framework](https://observablehq.com), which includes
+a [DuckDB](https://duckdb.org) wasm build, which queries the archive as parquet
+files. It's kind of horrifying yeah but also cool.
+
+### Can you add X feature?
+
+Maybe, post in the thread about it. If you don't want to wait, you can also just
+download the raw data and query it yourself, with duckDB or whatever.
+
+### archives are bad
+
+Yeah, I'm kind of ambivalent, but I have autism for data visualization and
+awful javascript frameworks, so I did it anyway.
+
+### How can I contact you?
+
+Post in the thread, I'll see it.
