@@ -11,6 +11,9 @@ is built offline and loaded as parquet files.
 It is a bit limited, in that it only searches stems of common words, and no search operators (I think).
 But still, very fast for ~1.3 million posts.
 
+If you see errors, try a different browser, or turn off the "advanced tracking protection". Not sure why it
+breaks this script particularly when the javascript is just as horrifying on the other pages, but oh well.
+
 ```js
 const schema_sql = `
 LOAD fts;

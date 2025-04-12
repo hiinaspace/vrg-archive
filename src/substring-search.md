@@ -73,6 +73,13 @@ WHERE
 GROUP BY
     themonth,
     st.term -- Group by month AND by term
+ORDER BY
+    themonth,
+    st.term -- Sort by month AND by term
+```
+
+```js
+const width = 600;
 ```
 
 ```js

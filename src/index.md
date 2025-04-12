@@ -18,7 +18,7 @@ I don't have thumbnails or images (yet), but I'm working on it. Until then,
 enjoy the data.
 
 <div class="warning">All queries in your browser, which means you'll download a
-fair amount (~100MB) of data. So probably don't browse this your phone.</div>
+fair amount (~100MB) of data. So probably don't browse this on your phone.</div>
 
 ## Pages
 
@@ -73,6 +73,13 @@ I guess after all these years we've only posted ~80MB of insightful, original te
 This site uses [Observable Framework](https://observablehq.com), which includes
 a [DuckDB](https://duckdb.org) wasm build, which queries the archive as parquet
 files. It's kind of horrifying yeah but also cool.
+
+https://git.vrg.party/hiina/vrg-archive has the source if you want to stare that the sql.
+
+I don't have any scraper code uploaded yet, but full disclosure: it's all
+(almost) one-shot python slop by gemini 2.5 pro, so you might as well ask "I want to
+scrape a fuuka-based archiver for a single thread" and have it slop it out for
+you yourself.
 
 ### Can you add X feature?
 

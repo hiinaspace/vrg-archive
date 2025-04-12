@@ -7,7 +7,10 @@ sql:
 
 # Thread Browser
 
-Browser posts in old threads in a somewhat faithful format. It takes a bit to load and this framework is bad about indicating loading progress, so wait around if you don't see anything.
+Browser posts in old threads in a somewhat faithful format. It takes a bit to
+load and this framework is bad about indicating loading progress, so wait around
+if you don't see anything. **Select a thread to display from the table, else
+you'll see some (transient) errors**.
 
 There are no thumbnails or full images (yet).
 
