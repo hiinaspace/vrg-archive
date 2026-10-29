@@ -6,9 +6,14 @@ https://archive-beta.vrg.party/*
   X-Robots-Tag: noindex
 https://:project.pages.dev/*
   X-Robots-Tag: noindex
+# Packs and shards are read with HTTP Range (206). no-transform stops the edge recompressing them,
+# which would drop Range support and shift byte offsets (same rules as worldsearch's deploy).
 /data/*
   X-Robots-Tag: noindex
-  Cache-Control: public, max-age=3600
+  Cache-Control: public, max-age=3600, no-transform
+
+/data/*.bin
+  Content-Type: application/octet-stream
 /p/*
   X-Robots-Tag: noindex
 /assets/*
