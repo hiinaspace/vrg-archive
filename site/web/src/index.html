@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>/vrg/ archive search</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='7' fill='%236d5dfc'/%3E%3C/svg%3E">
+__CSS__
+</head>
+<body>
+<div id="app">
+  <header class="top">
+    <h1><a href="./">/vrg/ archive</a></h1>
+    <form class="qwrap" id="qform" action="./" method="get">
+      <input id="q" name="q" type="search" autocomplete="off" spellcheck="false" placeholder='Search posts: half-remembered words, "exact phrase", -exclude, a | b, thread:1978, has:image' aria-label="Search">
+      <button id="syntax-btn" class="help" type="button" aria-expanded="false" aria-controls="syntax-pop" title="Search syntax">?</button>
+      <div id="syntax-pop" class="pop" hidden></div>
+    </form>
+    <button id="fbtn" class="fbtn" type="button">Filters</button>
+    <span id="status" class="status" aria-live="polite"></span>
+    <a class="aboutlink" href="t/">Threads</a>
+    <a class="aboutlink" href="about.html">About</a>
+  </header>
+  <div class="layout">
+    <aside id="facets" class="facets"></aside>
+    <main>
+      <div id="pills" class="pills" hidden></div>
+      <section class="series" id="series">
+        <div class="shead">
+          <h2>Over time</h2>
+          <div class="seg sm" id="mode" role="group" aria-label="y axis"><button data-v="share" title="matches as a share of all posts that month">share of posts</button><button data-v="count">count</button></div>
+          <div class="seg sm" id="gran" role="group" aria-label="resolution"><button data-v="auto">auto</button><button data-v="month">month</button><button data-v="week">week</button></div>
+          <span id="sinfo" class="dim"></span>
+        </div>
+        <div id="chart" class="chart"></div>
+        <div id="legend" class="legend"></div>
+      </section>
+      <div class="toolbar">
+        <div id="summary" class="summary"></div>
+        <div id="sorts" class="sorts" role="group" aria-label="Sort by"></div>
+      </div>
+      <ol id="results" class="results"></ol>
+      <button id="more" class="more" hidden>Show more</button>
+      <noscript><p>The search runs in JavaScript. Without it you can still browse the <a href="t/">thread list</a>.</p></noscript>
+    </main>
+    <aside id="detail" class="detail" hidden></aside>
+  </div>
+</div>
+<script type="module" src="__JS__"></script>
+</body>
+</html>

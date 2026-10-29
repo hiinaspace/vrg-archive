@@ -1,4 +1,4 @@
-# Hooks cover the corpus/ project only; the old Observable site is left alone.
+# Hooks cover the corpus/ and site/ projects; the old Observable site is left alone.
 repos:
   - repo: local
     hooks:
@@ -23,8 +23,41 @@ repos:
         files: ^corpus/
       - id: pytest
         name: pytest
-        entry: uv run --project corpus pytest -q
+        entry: uv run --project corpus pytest -q corpus/tests
         language: system
         pass_filenames: false
         types: [python]
         files: ^corpus/
+
+      - id: site-ruff-format
+        name: site ruff format
+        entry: uv run --project site ruff format --config site/pyproject.toml
+        language: system
+        types: [python]
+        files: ^site/
+      - id: site-ruff-check
+        name: site ruff lint
+        entry: uv run --project site ruff check --config site/pyproject.toml --fix
+        language: system
+        types: [python]
+        files: ^site/
+      - id: site-ty
+        name: site ty typecheck
+        entry: uv run --project site ty check site/src
+        language: system
+        pass_filenames: false
+        types: [python]
+        files: ^site/
+      - id: site-pytest
+        name: site pytest
+        entry: uv run --project site pytest -q site/tests
+        language: system
+        pass_filenames: false
+        types: [python]
+        files: ^site/
+      - id: site-web-check
+        name: site web tsc + node tests
+        entry: bash -c 'cd site/web && npx tsc --noEmit && npm test --silent'
+        language: system
+        pass_filenames: false
+        files: ^site/web/

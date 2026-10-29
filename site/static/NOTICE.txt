@@ -1,0 +1,21 @@
+archive.vrg.party (Hiina <hiina@hiina.space>)
+
+Parts of the search interface (query language parser, tokenizer, histogram, range slider,
+stylesheet structure) are adapted from worldsearch, https://github.com/hiinaspace/vrcwscrape
+(branch search-static, search/), which is released under the WTFPL:
+
+            DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
+                    Version 2, December 2004
+
+ Copyright (C) 2004 Sam Hocevar <sam@hocevar.net>
+
+ Everyone is permitted to copy and distribute verbatim or modified
+ copies of this license document, and changing it is allowed as long
+ as the name is changed.
+
+            DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
+   TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
+
+  0. You just DO WHAT THE FUCK YOU WANT TO.
+
+Post text and thumbnails are user content originally published on 4chan.

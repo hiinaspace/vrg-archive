@@ -1,0 +1,5 @@
+# Takedown list, applied at build time. One entry per line, '#' starts a comment.
+#   123456789        exclude one post (text, thumbnail, quotes, permalinks)
+#   thread:123456    exclude a whole thread
+#   md5:<hex>        drop the file info and thumbnail of every post with that image md5
+# Take effect at the next build; rebuild by hand for an urgent one.

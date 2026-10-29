@@ -1,0 +1,13 @@
+import { chromium } from "playwright";
+const [url, out, scheme = "light", w = "1200", h = "900", scrollTo = ""] = process.argv.slice(2);
+const b = await chromium.launch({ executablePath: "/home/s/.cache/ms-playwright/chromium_headless_shell-1223/chrome-headless-shell-linux64/chrome-headless-shell" });
+const p = await b.newPage({ viewport: { width: +w, height: +h }, colorScheme: scheme });
+const errs = [];
+p.on("console", (m) => { if (m.type() === "error") errs.push(m.text()); });
+await p.goto(url);
+await p.waitForTimeout(2500);
+if (scrollTo) await p.evaluate((id) => document.getElementById(id)?.scrollIntoView(), scrollTo);
+await p.waitForTimeout(1500);
+console.log("imgs hydrated:", await p.$$eval(".th img", (l) => l.length), "errors:", errs);
+await p.screenshot({ path: out });
+await b.close();

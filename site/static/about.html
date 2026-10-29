@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>About - archive.vrg.party</title>
+<link rel="stylesheet" href="t/thread.css">
+<style>main{max-width:46em;margin:0 auto;font-size:15px;line-height:1.5}h1,h2{color:var(--hd)}code{background:var(--post);padding:0 3px}
+td,th{padding:2px 12px 2px 0;text-align:left;vertical-align:top}</style>
+</head><body>
+<nav class="nv"><a href="./">Search</a> <a href="t/">Threads</a> <a href="about.html">About</a></nav>
+<main>
+<h1>About this archive</h1>
+<p>An archive of the 4chan /vg/ <b>/vrg/ (Virtual Reality General)</b> threads, searchable in your browser. There is no server:
+the search runs in JavaScript over static index files, so nothing you type is sent anywhere.</p>
+<h2 id="data">What is indexed</h2>
+<p>__POSTS__ posts in __THREADS__ threads, __FIRST__ to __LAST__ (UTC). The data came from the 4chan API (2025-04 onward), and from an
+earlier archive export (before that). Only threads whose last post is more than 7 days old are published, so moderator deletions have
+settled first. Data as of __SNAP__.</p>
+<p><b>Deleted posts are excluded</b> everywhere: not in the search index, not on thread pages, not in quote previews. A <code>&gt;&gt;N</code> that points
+at a missing or excluded post is shown as plain text. Images are never served in full. Thumbnails are the small previews 4chan
+published, shown only for posts whose file was not deleted; spoilered thumbnails stay blurred until clicked. Older posts show
+a placeholder with the file name and dimensions instead.</p>
+<h2>Takedowns</h2>
+<p>To have a post, thread or image removed, contact <b>TODO-contact</b> with the post number (<code>No.123456789</code>). Removals are listed in
+<code>excluded_ids.txt</code> and applied at the next build; urgent ones are rebuilt by hand.</p>
+<h2>Search syntax</h2>
+<table>
+<tr><th><code>quest pro</code></th><td>all words (case-insensitive; digits count; plurals are folded)</td></tr>
+<tr><th><code>"exact phrase"</code></th><td>words next to each other</td></tr>
+<tr><th><code>-word</code>, <code>a | b</code>, <code>(a | b) c</code></th><td>exclude, either, grouping. OR binds tighter than a space</td></tr>
+<tr><th><code>thread:1978</code></th><td>one thread (edition number or thread id)</td></tr>
+<tr><th><code>after:2023-05 before:2024</code></th><td>date range; <code>date:2023</code>, <code>date:2023-01..2023-06</code>, <code>date:&gt;=2024</code></td></tr>
+<tr><th><code>has:image</code>, <code>ext:png</code>, <code>has:link</code></th><td>image posts, file type (jpg png gif webm mp4), posts with links</td></tr>
+<tr><th><code>op:yes</code></th><td>first posts of threads</td></tr>
+<tr><th><code>replies:&gt;=5</code></th><td>posts with at least that many replies</td></tr>
+<tr><th><code>domain:youtube.com</code></th><td>posts linking a site (the commonest sites only)</td></tr>
+<tr><th><code>name:foo</code>, <code>trip:abc123</code></th><td>poster name or tripcode (almost all posts are Anonymous)</td></tr>
+<tr><th><code>filename:vrchat</code></th><td>words in the posted file's name</td></tr>
+<tr><th><code>greentext:implying</code></th><td>only inside &gt;greentext lines</td></tr>
+<tr><th><code>&gt;&gt;585933859</code></th><td>replies to that post</td></tr>
+</table>
+<p>Japanese, Chinese and Korean text is matched as character pairs. Very common words (the, a, to ...) are ignored when the query
+has other words. Quote numbers are not searchable as words. Facet counts cover every post matching the query and all filters.</p>
+<p>Source and build: <a href="https://git.vrg.party/hiina/vrg-archive">git.vrg.party/hiina/vrg-archive</a>. The interface and query language are adapted from
+<a href="https://worldsearch.hiina.space">worldsearch.hiina.space</a> (WTFPL, <a href="https://github.com/hiinaspace/vrcwscrape">hiinaspace/vrcwscrape</a>). See <a href="NOTICE.txt">NOTICE.txt</a>.</p>
+</main></body></html>

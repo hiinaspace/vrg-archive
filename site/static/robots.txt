@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /t/
+Disallow: /data/
+Disallow: /p/
+Disallow: /assets/
+Sitemap: https://archive.vrg.party/sitemap.xml

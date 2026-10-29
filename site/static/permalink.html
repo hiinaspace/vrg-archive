@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Post permalink - archive.vrg.party</title>
+<style>body{font:15px/1.4 system-ui,sans-serif;max-width:40em;margin:3em auto;padding:0 1em}@media(prefers-color-scheme:dark){body{background:#1d1f21;color:#c5c8c6}a{color:#81a2be}}</style>
+</head><body>
+<h1>Post permalink</h1>
+<p id="msg">Looking up the post&hellip; <noscript>This page needs JavaScript to find the thread. Use <a href="../">search</a> or the <a href="../t/">thread list</a>.</noscript></p>
+<script>
+(function () {
+  var no = +(location.search.slice(1) || location.hash.slice(1)).replace(/\D/g, "");
+  var msg = document.getElementById("msg");
+  if (!no) { msg.innerHTML = 'Usage: <code>/p/?585933859</code>. Or <a href="../">search</a>.'; return; }
+  var shift = __SHIFT__;
+  var key = Math.floor(no / Math.pow(2, shift));
+  function varint(b, st) { var r = 0, s = 1, c; do { c = b[st.p++]; r += (c & 127) * s; s *= 128; } while (c & 128); return r; }
+  async function gunzip(buf) {
+    var ds = new DecompressionStream("gzip");
+    return new Uint8Array(await new Response(new Blob([buf]).stream().pipeThrough(ds)).arrayBuffer());
+  }
+  Promise.all([fetch(key + ".bin"), fetch("threads.bin")]).then(async function (rs) {
+    if (!rs[0].ok) throw 0;
+    var b = await gunzip(await rs[0].arrayBuffer()), st = { p: 0 }, cur = 0, hit = -1;
+    while (st.p < b.length) { cur += varint(b, st); var t = varint(b, st); if (cur === no) { hit = t; break; } if (cur > no) break; }
+    if (hit < 0) throw 0;
+    var tb = new Uint32Array((await rs[1].arrayBuffer()));
+    location.replace("../t/" + tb[hit] + ".html#p" + no);
+  }).catch(function () {
+    msg.innerHTML = "Post " + no + ' is not in the archive (it may be deleted, excluded, or too recent). <a href="../">Search</a>.';
+  });
+})();
+</script></body></html>
