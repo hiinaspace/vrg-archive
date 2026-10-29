@@ -5,3 +5,7 @@ yarn-error.log
 site/.venv/
 site/web/node_modules/
 site/web/.test/
+
+# owner-private oracle data (kept in vrg-archive-data/oracle)
+site/oracle/queries.txt
+site/oracle/smoke_targets.json
