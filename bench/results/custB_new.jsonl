@@ -1,0 +1,15 @@
+{"kind":"rare","label":"yamada","rows":6,"cand":6,"total_ms":31,"static_br":2461,"data":114812,"data_reqs":9,"static_files":2}
+{"kind":"rare","label":"curation","rows":15,"cand":15,"total_ms":44,"static_br":2461,"data":159548,"data_reqs":17,"static_files":2}
+{"kind":"rare","label":"creepypasta","rows":9,"cand":9,"total_ms":29,"static_br":2461,"data":125487,"data_reqs":11,"static_files":2}
+{"kind":"rare","label":"czechvr","rows":6,"cand":6,"total_ms":27,"static_br":2461,"data":223099,"data_reqs":7,"static_files":2}
+{"kind":"rare","label":"seasick","rows":10,"cand":10,"total_ms":27,"static_br":2461,"data":134383,"data_reqs":12,"static_files":2}
+{"kind":"common","label":"vrchat","rows":20,"cand":50681,"total_ms":71,"static_br":2461,"data":268808,"data_reqs":20,"static_files":2}
+{"kind":"common","label":"game","rows":20,"cand":57576,"total_ms":71,"static_br":2461,"data":231054,"data_reqs":16,"static_files":2}
+{"kind":"common","label":"anyone","rows":20,"cand":28005,"total_ms":74,"static_br":2461,"data":264275,"data_reqs":30,"static_files":2}
+{"kind":"common","label":"headset","rows":20,"cand":22092,"total_ms":56,"static_br":2461,"data":191557,"data_reqs":16,"static_files":2}
+{"kind":"common","label":"quest","rows":20,"cand":21122,"total_ms":64,"static_br":2461,"data":228633,"data_reqs":24,"static_files":2}
+{"kind":"phrase","label":"mic spam","rows":20,"cand":38,"total_ms":72,"static_br":2461,"data":312402,"data_reqs":41,"static_files":2}
+{"kind":"phrase","label":"public avatars","rows":20,"cand":811,"total_ms":155,"static_br":2461,"data":1100190,"data_reqs":113,"static_files":2}
+{"kind":"phrase","label":"index controllers","rows":20,"cand":2668,"total_ms":71,"static_br":2461,"data":323216,"data_reqs":36,"static_files":2}
+{"kind":"substring","label":"wrld_","rows":20,"cand":1657,"total_ms":49,"static_br":2461,"data":228560,"data_reqs":32,"static_files":2}
+{"kind":"date","label":"vrchat 2023","rows":20,"cand":3886,"total_ms":52,"static_br":2461,"data":246724,"data_reqs":16,"static_files":2}

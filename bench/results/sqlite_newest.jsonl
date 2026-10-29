@@ -1,0 +1,15 @@
+{"kind":"rare","label":"yamada","rows":9,"init_ms":220,"query_ms":78,"static_br":420692,"data":102576,"data_reqs":23,"static_files":4}
+{"kind":"rare","label":"curation","rows":20,"init_ms":167,"query_ms":82,"static_br":420692,"data":155824,"data_reqs":36,"static_files":4}
+{"kind":"rare","label":"creepypasta","rows":9,"init_ms":163,"query_ms":68,"static_br":420692,"data":118960,"data_reqs":27,"static_files":4}
+{"kind":"rare","label":"czechvr","rows":6,"init_ms":162,"query_ms":40,"static_br":420692,"data":73904,"data_reqs":16,"static_files":4}
+{"kind":"rare","label":"seasick","rows":19,"init_ms":163,"query_ms":79,"static_br":420692,"data":184496,"data_reqs":42,"static_files":4}
+{"kind":"common","label":"vrchat","rows":20,"init_ms":162,"query_ms":66,"static_br":420692,"data":110768,"data_reqs":25,"static_files":4}
+{"kind":"common","label":"game","rows":20,"init_ms":154,"query_ms":54,"static_br":420692,"data":98480,"data_reqs":22,"static_files":4}
+{"kind":"common","label":"anyone","rows":20,"init_ms":155,"query_ms":74,"static_br":420692,"data":139440,"data_reqs":32,"static_files":4}
+{"kind":"common","label":"headset","rows":20,"init_ms":157,"query_ms":68,"static_br":420692,"data":118960,"data_reqs":27,"static_files":4}
+{"kind":"common","label":"quest","rows":20,"init_ms":162,"query_ms":66,"static_br":420692,"data":131248,"data_reqs":30,"static_files":4}
+{"kind":"phrase","label":"mic spam","rows":20,"init_ms":158,"query_ms":91,"static_br":420692,"data":221360,"data_reqs":44,"static_files":4}
+{"kind":"phrase","label":"public avatars","rows":20,"init_ms":155,"query_ms":102,"static_br":420692,"data":209072,"data_reqs":49,"static_files":4}
+{"kind":"phrase","label":"index controllers","rows":20,"init_ms":160,"query_ms":86,"static_br":420692,"data":155824,"data_reqs":36,"static_files":4}
+{"kind":"substring","label":"wrld_","rows":20,"init_ms":161,"query_ms":64,"static_br":420692,"data":135344,"data_reqs":30,"static_files":4}
+{"kind":"date","label":"vrchat 2023","rows":20,"init_ms":158,"query_ms":63,"static_br":420692,"data":123056,"data_reqs":28,"static_files":4}

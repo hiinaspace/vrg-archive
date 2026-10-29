@@ -1,0 +1,15 @@
+{"kind":"rare","label":"yamada","rows":9,"init_ms":160,"query_ms":78,"static_br":420692,"data":151728,"data_reqs":34,"static_files":4}
+{"kind":"rare","label":"curation","rows":20,"init_ms":158,"query_ms":372,"static_br":420692,"data":1626288,"data_reqs":202,"static_files":4}
+{"kind":"rare","label":"creepypasta","rows":9,"init_ms":163,"query_ms":97,"static_br":420692,"data":184496,"data_reqs":42,"static_files":4}
+{"kind":"rare","label":"czechvr","rows":6,"init_ms":159,"query_ms":63,"static_br":420692,"data":98480,"data_reqs":22,"static_files":4}
+{"kind":"rare","label":"seasick","rows":19,"init_ms":165,"query_ms":140,"static_br":420692,"data":295088,"data_reqs":66,"static_files":4}
+{"kind":"common","label":"vrchat","rows":20,"init_ms":158,"query_ms":413,"static_br":420692,"data":14303408,"data_reqs":67,"static_files":4}
+{"kind":"common","label":"game","rows":20,"init_ms":165,"query_ms":542,"static_br":420692,"data":14573744,"data_reqs":70,"static_files":4}
+{"kind":"common","label":"anyone","rows":20,"init_ms":160,"query_ms":303,"static_br":420692,"data":14135472,"data_reqs":57,"static_files":4}
+{"kind":"common","label":"headset","rows":20,"init_ms":160,"query_ms":319,"static_br":420692,"data":14180528,"data_reqs":68,"static_files":4}
+{"kind":"common","label":"quest","rows":20,"init_ms":161,"query_ms":341,"static_br":420692,"data":11862192,"data_reqs":106,"static_files":4}
+{"kind":"phrase","label":"mic spam","rows":20,"init_ms":158,"query_ms":231,"static_br":420692,"data":565424,"data_reqs":128,"static_files":4}
+{"kind":"phrase","label":"public avatars","rows":20,"init_ms":160,"query_ms":261,"static_br":420692,"data":11227312,"data_reqs":111,"static_files":4}
+{"kind":"phrase","label":"index controllers","rows":20,"init_ms":161,"query_ms":217,"static_br":420692,"data":10121392,"data_reqs":84,"static_files":4}
+{"kind":"substring","label":"wrld_","rows":20,"init_ms":161,"query_ms":61,"static_br":420692,"data":135344,"data_reqs":30,"static_files":4}
+{"kind":"date","label":"vrchat 2023","rows":20,"init_ms":161,"query_ms":148,"static_br":420692,"data":2543792,"data_reqs":60,"static_files":4}

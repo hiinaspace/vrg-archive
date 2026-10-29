@@ -1,0 +1,15 @@
+{"kind":"rare","label":"yamada","rows":6,"cand":6,"total_ms":59,"static_br":2461,"data":400634,"data_reqs":14,"static_files":2}
+{"kind":"rare","label":"curation","rows":15,"cand":15,"total_ms":71,"static_br":2461,"data":331460,"data_reqs":22,"static_files":2}
+{"kind":"rare","label":"creepypasta","rows":9,"cand":9,"total_ms":62,"static_br":2461,"data":727782,"data_reqs":16,"static_files":2}
+{"kind":"rare","label":"czechvr","rows":6,"cand":6,"total_ms":64,"static_br":2461,"data":583472,"data_reqs":12,"static_files":2}
+{"kind":"rare","label":"seasick","rows":10,"cand":10,"total_ms":69,"static_br":2461,"data":422736,"data_reqs":17,"static_files":2}
+{"kind":"common","label":"vrchat","rows":20,"cand":50681,"total_ms":131,"static_br":2461,"data":595167,"data_reqs":46,"static_files":2}
+{"kind":"common","label":"game","rows":20,"cand":57576,"total_ms":132,"static_br":2461,"data":548179,"data_reqs":46,"static_files":2}
+{"kind":"common","label":"anyone","rows":20,"cand":28005,"total_ms":102,"static_br":2461,"data":504277,"data_reqs":47,"static_files":2}
+{"kind":"common","label":"headset","rows":20,"cand":22092,"total_ms":105,"static_br":2461,"data":523160,"data_reqs":44,"static_files":2}
+{"kind":"common","label":"quest","rows":20,"cand":21122,"total_ms":124,"static_br":2461,"data":585724,"data_reqs":46,"static_files":2}
+{"kind":"phrase","label":"mic spam","rows":20,"cand":38,"total_ms":127,"static_br":2461,"data":1058190,"data_reqs":51,"static_files":2}
+{"kind":"phrase","label":"public avatars","rows":20,"cand":811,"total_ms":185,"static_br":2461,"data":1579136,"data_reqs":92,"static_files":2}
+{"kind":"phrase","label":"index controllers","rows":20,"cand":2668,"total_ms":123,"static_br":2461,"data":820655,"data_reqs":47,"static_files":2}
+{"kind":"substring","label":"wrld_","rows":20,"cand":1657,"total_ms":119,"static_br":2461,"data":742940,"data_reqs":48,"static_files":2}
+{"kind":"date","label":"vrchat 2023","rows":20,"cand":3886,"total_ms":85,"static_br":2461,"data":311687,"data_reqs":40,"static_files":2}

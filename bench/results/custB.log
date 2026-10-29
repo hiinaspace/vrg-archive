@@ -1,0 +1,2 @@
+part 0 0 1375527 60.91186285018921
+{"N": 1375527, "PS": 2097152, "B": 1024, "build_s": 69.23301887512207, "index_bytes": 45394859, "nshards": 1024, "postings": 25588570, "docs_bytes": 96961458, "total_bytes": 142431695, "stop": ["a", "and", "i", "is", "it", "the", "to", "you"], "nstop": 8}

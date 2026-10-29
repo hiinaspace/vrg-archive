@@ -1,0 +1,15 @@
+{"kind":"rare","label":"yamada","rows":6,"cand":6,"total_ms":72,"static_br":2461,"data":400634,"data_reqs":14,"static_files":2}
+{"kind":"rare","label":"curation","rows":15,"cand":15,"total_ms":85,"static_br":2461,"data":331460,"data_reqs":22,"static_files":2}
+{"kind":"rare","label":"creepypasta","rows":9,"cand":9,"total_ms":72,"static_br":2461,"data":727782,"data_reqs":16,"static_files":2}
+{"kind":"rare","label":"czechvr","rows":6,"cand":6,"total_ms":64,"static_br":2461,"data":583472,"data_reqs":12,"static_files":2}
+{"kind":"rare","label":"seasick","rows":10,"cand":10,"total_ms":71,"static_br":2461,"data":422736,"data_reqs":17,"static_files":2}
+{"kind":"common","label":"vrchat","rows":20,"cand":1913,"total_ms":45,"static_br":2461,"data":174336,"data_reqs":20,"static_files":2}
+{"kind":"common","label":"game","rows":20,"cand":3078,"total_ms":53,"static_br":2461,"data":154651,"data_reqs":16,"static_files":2}
+{"kind":"common","label":"anyone","rows":20,"cand":990,"total_ms":64,"static_br":2461,"data":211684,"data_reqs":30,"static_files":2}
+{"kind":"common","label":"headset","rows":20,"cand":1527,"total_ms":43,"static_br":2461,"data":154650,"data_reqs":16,"static_files":2}
+{"kind":"common","label":"quest","rows":20,"cand":1926,"total_ms":52,"static_br":2461,"data":198598,"data_reqs":24,"static_files":2}
+{"kind":"phrase","label":"mic spam","rows":20,"cand":38,"total_ms":120,"static_br":2461,"data":1058190,"data_reqs":51,"static_files":2}
+{"kind":"phrase","label":"public avatars","rows":20,"cand":145,"total_ms":152,"static_br":2461,"data":847964,"data_reqs":100,"static_files":2}
+{"kind":"phrase","label":"index controllers","rows":20,"cand":116,"total_ms":59,"static_br":2461,"data":265205,"data_reqs":36,"static_files":2}
+{"kind":"substring","label":"wrld_","rows":20,"cand":124,"total_ms":57,"static_br":2461,"data":237423,"data_reqs":32,"static_files":2}
+{"kind":"date","label":"vrchat 2023","rows":20,"cand":3886,"total_ms":43,"static_br":2461,"data":202657,"data_reqs":16,"static_files":2}

@@ -1,0 +1,4 @@
+loaded 13.427214860916138
+optimized 14.64675784111023
+done 15.878473281860352 317554688
+uv run build_sqlite.py "porter unicode61 remove_diacritics 2" vrg full  14.92s user 2.96s system 108% cpu 16.476 total
