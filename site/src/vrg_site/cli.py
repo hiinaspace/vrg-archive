@@ -22,8 +22,9 @@ def main(argv: list[str] | None = None) -> None:
     b.add_argument("--excluded", type=Path, default=None)
     b.add_argument("--limit-threads", type=int, default=None, help="dev: only the newest N threads")
     b.add_argument("--skip-web", action="store_true")
+    b.add_argument("--pool", type=Path, default=None, help="b4k thumbnail store (md5-addressed)")
     a = ap.parse_args(argv)
     stats = B.build(
-        a.corpus, a.snapshot_db, a.out, a.snapshot, a.excluded, a.limit_threads, a.skip_web
+        a.corpus, a.snapshot_db, a.out, a.snapshot, a.excluded, a.limit_threads, a.skip_web, a.pool
     )
     print(json.dumps({k: v for k, v in stats.items() if k != "stop"}, indent=1, default=str))

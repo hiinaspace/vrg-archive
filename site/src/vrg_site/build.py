@@ -25,6 +25,7 @@ def build(
     excluded: Path | None = None,
     limit_threads: int | None = None,
     skip_web: bool = False,
+    pool: Path | None = None,
     log=print,
 ) -> dict:
     t0 = time.time()
@@ -39,7 +40,14 @@ def build(
         f"{time.time() - t0:.0f}s"
     )
     wanted = {p[C.NO] for p in cor.posts if p[C.FEXT] and not p[C.FDELETED]}
-    loc, tstats = thumbs.pack(snapshot_db, wanted, out / "data" / "thumbs")
+    pool_dir = pool_md5 = pool_have = None
+    if pool is not None and (pool / "state.sqlite").exists():
+        pool_dir = pool
+        pool_have = thumbs.pool_md5s(pool / "state.sqlite")
+        pool_md5 = {p[C.NO]: p[C.MD5] for p in cor.posts if p[C.NO] in wanted and p[C.MD5]}
+    loc, tstats = thumbs.pack(
+        snapshot_db, wanted, out / "data" / "thumbs", pool_dir, pool_md5, pool_have
+    )
     log(f"thumbs {tstats} {time.time() - t0:.0f}s")
     stats = index.build(cor, quotes, loc, out / "data", out / "p", log=log)
     stats.update(tstats)

@@ -3,8 +3,11 @@
 from __future__ import annotations
 
 import hashlib
+import shutil
 import sqlite3
 import struct
+import tempfile
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 PACK_BYTES = 16 * 1024 * 1024
@@ -33,8 +36,24 @@ def jpeg_size(b: bytes) -> tuple[int, int]:
     return 0, 0
 
 
+def pool_md5s(state_db: Path) -> set[str]:
+    """md5s that the b4k fetcher has stored (read from a local copy of its state DB)."""
+    with tempfile.TemporaryDirectory() as d:
+        local = Path(d) / "state.sqlite"
+        shutil.copy(state_db, local)
+        con = sqlite3.connect(f"file:{local}?mode=ro", uri=True)
+        got = {r[0] for r in con.execute("SELECT md5 FROM thumb WHERE status IN ('ok','dup')")}
+        con.close()
+    return got
+
+
 def pack(
-    snapshot_db: Path, wanted: set[int], out_dir: Path
+    snapshot_db: Path,
+    wanted: set[int],
+    out_dir: Path,
+    pool_dir: Path | None = None,
+    pool_md5: dict[int, str] | None = None,
+    pool_have: set[str] | None = None,
 ) -> tuple[dict[int, tuple[int, int, int, int, int]], dict[str, int]]:
     """Write ``out_dir/pack<k>.bin``; return {post no: (pack, offset, length, w, h)}.
 
@@ -77,7 +96,36 @@ def pack(
         loc[no] = ent
     flush()
     con.close()
+    blob_posts = len(loc)
+    if pool_dir is not None and pool_md5 and pool_have:
+        # b4k thumbnails stored by md5: post order (thread locality), each md5 once
+        todo = sorted(n for n in wanted if n not in loc and pool_md5.get(n) in pool_have)
+        by_md5: dict[str, tuple[int, int, int, int, int]] = {}
+        order = list(dict.fromkeys(pool_md5[n] for n in todo))
+
+        def read(m: str) -> bytes:
+            return (pool_dir / "raw" / m[:2] / f"{m}.jpg").read_bytes()
+
+        with ThreadPoolExecutor(16) as ex:
+            for lo in range(0, len(order), 2000):
+                chunk = order[lo : lo + 2000]
+                for m, blob in zip(chunk, ex.map(read, chunk), strict=True):
+                    if len(cur) + len(blob) > PACK_BYTES:
+                        flush()
+                    w, h = jpeg_size(blob)
+                    by_md5[m] = (pack_i, len(cur), len(blob), w, h)
+                    cur += blob
+                    unique_bytes += len(blob)
+        flush()
+        for n in todo:
+            loc[n] = by_md5[pool_md5[n]]
+        seen.update({m.encode(): e for m, e in by_md5.items()})
+        pool_posts = len(todo)
+    else:
+        pool_posts = 0
     return loc, {
+        "thumb_blob_posts": blob_posts,
+        "thumb_pool_posts": pool_posts,
         "thumbs": len(loc),
         "thumb_unique": len(seen),
         "thumb_bytes": unique_bytes,

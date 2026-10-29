@@ -30,6 +30,13 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("log", type=Path)
     p.add_argument("out", type=Path)
 
+    p = sub.add_parser("thumbs-fetch", help="polite resumable fetch of b4k thumbnails")
+    p.add_argument("corpus", type=Path)
+    p.add_argument("--blob-db", type=Path, default=None, help="snapshot copy of the scraper DB")
+    p.add_argument("--store", type=Path, default=None)
+    p.add_argument("--interval", type=float, default=1.0, help="seconds between requests (>=0.5)")
+    p.add_argument("--limit", type=int, default=None, help="stop after N thumbnail fetches")
+
     args = ap.parse_args(argv)
     if args.cmd == "build":
         import json
@@ -62,6 +69,16 @@ def main(argv: list[str] | None = None) -> int:
 
         args.out.write_text(probe.report(args.log))
         return 0
+    if args.cmd == "thumbs-fetch":
+        from . import thumbs_fetch as tf
+
+        return tf.run(
+            args.corpus,
+            args.blob_db,
+            args.store or tf.STORE_DEFAULT,
+            args.interval,
+            limit=args.limit,
+        )
     return 1
 
 

@@ -3,13 +3,21 @@ name = "vrg-corpus"
 version = "0.1.0"
 description = "Normalizer and merged corpus builder for the /vrg/ archive"
 requires-python = ">=3.12"
-dependencies = ["duckdb>=1.1"]
+dependencies = [
+    "duckdb>=1.1",
+    "pillow>=13.0.0",
+]
 
 [project.scripts]
 vrg-corpus = "vrg_corpus.cli:main"
 
 [dependency-groups]
-dev = ["pytest>=8", "ruff>=0.8", "ty>=0.0.1a1"]
+dev = [
+    "numpy>=2.5.4",
+    "pytest>=8",
+    "ruff>=0.8",
+    "ty>=0.0.1a1",
+]
 
 [build-system]
 requires = ["hatchling"]
