@@ -5,7 +5,7 @@ import { writeFileSync } from "node:fs";
 
 const base = process.argv[2] ?? "http://localhost:8796/";
 const out = process.argv[3] ?? "measure.json";
-const exe = "/home/s/.cache/ms-playwright/chromium_headless_shell-1223/chrome-headless-shell-linux64/chrome-headless-shell";
+const exe = process.env.CHROME_PATH;
 const browser = await chromium.launch({ executablePath: exe });
 
 async function scenario(url, ready, { after } = {}) {

@@ -149,7 +149,7 @@ nested inside a dropped `like-perk-cnt` element (example post 248867583); there 
 in kept content. No `<pre class="prettyprint">` exists in this corpus (/vg/ has no code tag), so
 `[code]` in the data is always text users typed. See `tests/` for sampled rows of each form.
 
-## 5. Scraper bugs and oddities (chirashi `~/code/vrg-scraper`, read only, not trusted)
+## 5. Scraper bugs and oddities (the vrg-scraper code, read only, not trusted)
 
 1. **`custom_spoiler` stored as a post field and read as if per-post.** 214 OP rows carry 1 (see
    above). Downstream code that treats it as "spoilered image" would blur OP images. The same

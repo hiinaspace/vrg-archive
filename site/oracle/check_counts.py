@@ -6,6 +6,7 @@ Runs web/test/dump.ts over a query list, then recomputes every number by scannin
 
 import argparse
 import json
+import os
 import re
 import sqlite3
 import subprocess
@@ -17,7 +18,7 @@ from pathlib import Path
 from vrg_site import text, tok
 
 SITE = Path(__file__).resolve().parents[1]
-DATA = Path("/home/s/code/vrg-archive-data")
+DATA = Path(os.environ.get("VRG_DATA", SITE.parent.parent / "vrg-archive-data"))
 SNAP = 1793306940
 
 

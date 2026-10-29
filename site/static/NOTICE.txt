@@ -18,4 +18,5 @@ stylesheet structure) are adapted from worldsearch, https://github.com/hiinaspac
 
   0. You just DO WHAT THE FUCK YOU WANT TO.
 
-Post text and thumbnails are user content originally published on 4chan.
+Post text and thumbnails are user content originally published on 4chan. Some posts and many
+2019-2025 thumbnails were retrieved from b4k (https://arch.b4k.dev), a public 4chan archive.

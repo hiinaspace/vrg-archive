@@ -303,7 +303,7 @@ def thumbs(snapdir: Path, corpus: Path, inventory: Path, out: Path) -> None:
         "",
         "- **live BLOB**: `posts.thumbnail` is non-null in the live scraper DB.",
         f"- **local full file**: a file named `{{tim}}.{{ext}}` for the post's `tim` exists under "
-        f"`chirashi:/mnt/nvme/vrg-scraper/vrgscraper-media` ({len(local_tims):,} files in the "
+        f"the scraper's media directory ({len(local_tims):,} files in the "
         "inventory taken 2026-10-29, listing only). Only live-DB rows have a `tim`; parquet rows "
         "have none, so they can never match a local file.",
         "- **b4k thumb_link**: the parquet row carries a thumbnail URL (16,147 rows; 16,136 on "

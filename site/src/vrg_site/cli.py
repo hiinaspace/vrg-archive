@@ -2,11 +2,15 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 from pathlib import Path
 
 from . import build as B
 
-DATA = Path("/home/s/code/vrg-archive-data")
+# data lives next to the repo checkout unless VRG_DATA says otherwise
+DATA = Path(
+    os.environ.get("VRG_DATA", Path(__file__).resolve().parents[3].parent / "vrg-archive-data")
+)
 
 
 def main(argv: list[str] | None = None) -> None:

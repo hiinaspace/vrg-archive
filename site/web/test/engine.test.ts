@@ -4,7 +4,7 @@ import assert from "node:assert/strict";
 import { Engine } from "../src/engine";
 import { FileStore } from "./filestore";
 
-const DIR = process.env.VRG_DATA ?? "/home/s/code/vrg-archive-data/site-r1/dev-dist/data";
+const DIR = (process.env.VRG_DATA ?? "../../vrg-archive-data") + "/site-r1/dev-dist/data";
 test("engine boots and answers", { skip: !existsSync(DIR + "/manifest.json") }, async () => {
   const e = await Engine.load(new FileStore(DIR));
   const r = await e.run("vrchat");

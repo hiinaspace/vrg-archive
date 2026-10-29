@@ -3,7 +3,7 @@ import { chromium } from "playwright";
 const url = process.argv[2] ?? "http://localhost:8796/";
 const q = process.argv[3] ?? "";
 const shot = process.argv[4];
-const b = await chromium.launch({ executablePath: "/home/s/.cache/ms-playwright/chromium_headless_shell-1223/chrome-headless-shell-linux64/chrome-headless-shell" });
+const b = await chromium.launch({ executablePath: process.env.CHROME_PATH });
 const p = await b.newPage({ viewport: { width: 1300, height: 1000 } });
 const errs = [];
 p.on("console", (m) => { if (m.type() === "error" || m.type() === "warning") errs.push(m.text()); });

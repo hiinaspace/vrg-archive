@@ -3,7 +3,7 @@
 Image post = corpus row with a file. Sources:
 
 - **live BLOB**: `posts.thumbnail` is non-null in the live scraper DB.
-- **local full file**: a file named `{tim}.{ext}` for the post's `tim` exists under `chirashi:/mnt/nvme/vrg-scraper/vrgscraper-media` (38,758 files in the inventory taken 2026-10-29, listing only). Only live-DB rows have a `tim`; parquet rows have none, so they can never match a local file.
+- **local full file**: a file named `{tim}.{ext}` for the post's `tim` exists in the scraper's media directory (38,758 files in the inventory taken 2026-10-29, listing only). Only live-DB rows have a `tim`; parquet rows have none, so they can never match a local file.
 - **b4k thumb_link**: the parquet row carries a thumbnail URL (16,147 rows; 16,136 on arch.b4k.dev, 11 on archived.moe).
 - **first source** assigns each post to exactly one bucket in the order BLOB, local, b4k, none, so those four columns sum to the row total.
 
