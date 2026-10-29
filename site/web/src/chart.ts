@@ -5,9 +5,10 @@ import { dayIso, esc, fmt, monthLabel } from "./util";
 
 export interface SeriesData { label: string; color: string; counts: number[]; approx: boolean }
 export interface ChartInput { bk: Buckets; totals: number[]; series: SeriesData[]; mode: "share" | "count"; brush: [number, number] | null }
-export const COLORS = ["#5b4bf0", "#e8890c", "#1fa971", "#d6336c", "#2f7bf0", "#8a6d00"];
+export const COLORS = ["#3a3ac8", "#c25400", "#0b7a4b", "#c2185b", "#0a6aa8", "#7a5c00"];
 const DARK_COLORS = ["#8b7dff", "#ffa940", "#3fd18f", "#ff6b9b", "#5b9bff", "#e8c547"];
-export const colorOf = (i: number) => (matchMedia("(prefers-color-scheme: dark)").matches ? DARK_COLORS : COLORS)[i % COLORS.length];
+const isDark = () => { const t = document.documentElement.dataset.theme; return t ? t === "dark" : matchMedia("(prefers-color-scheme: dark)").matches; };
+export const colorOf = (i: number) => (isDark() ? DARK_COLORS : COLORS)[i % COLORS.length];
 
 let W = 900;
 const H = 210, L = 46, R = 8, T = 8, Bm = 22;

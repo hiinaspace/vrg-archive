@@ -153,4 +153,4 @@ def test_privacy_rules(tmp_path):
     thr = struct.unpack("<2I", (out / "p/threads.bin").read_bytes())
     assert thr == (100, 200)
     assert (out / "robots.txt").read_text().count("Disallow: /data/") == 1
-    assert "TODO-contact" in (out / "about.html").read_text()
+    assert "hiina@hiina.space" in (out / "about.html").read_text()
