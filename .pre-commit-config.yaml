@@ -1,0 +1,30 @@
+# Hooks cover the corpus/ project only; the old Observable site is left alone.
+repos:
+  - repo: local
+    hooks:
+      - id: ruff-format
+        name: ruff format
+        entry: uv run --project corpus ruff format
+        language: system
+        types: [python]
+        files: ^corpus/
+      - id: ruff-check
+        name: ruff lint
+        entry: uv run --project corpus ruff check --fix
+        language: system
+        types: [python]
+        files: ^corpus/
+      - id: ty
+        name: ty typecheck
+        entry: uv run --project corpus ty check corpus/src
+        language: system
+        pass_filenames: false
+        types: [python]
+        files: ^corpus/
+      - id: pytest
+        name: pytest
+        entry: uv run --project corpus pytest -q
+        language: system
+        pass_filenames: false
+        types: [python]
+        files: ^corpus/

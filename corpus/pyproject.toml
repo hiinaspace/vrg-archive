@@ -1,0 +1,29 @@
+[project]
+name = "vrg-corpus"
+version = "0.1.0"
+description = "Normalizer and merged corpus builder for the /vrg/ archive"
+requires-python = ">=3.12"
+dependencies = ["duckdb>=1.1"]
+
+[project.scripts]
+vrg-corpus = "vrg_corpus.cli:main"
+
+[dependency-groups]
+dev = ["pytest>=8", "ruff>=0.8", "ty>=0.0.1a1"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/vrg_corpus"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

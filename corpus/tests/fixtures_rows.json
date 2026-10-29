@@ -1,0 +1,110 @@
+[
+ {
+  "no": 148716486,
+  "kind": "legacy",
+  "raw": "Discuss VR and VR games and accesories <br><br><span class=\"quote\">&gt;no &#039;hurr durr gimmick&#039; allowed</span><br><span class=\"quote\">&gt;no &#039;mines better than urs&#039; allowed</span><br><span class=\"quote\">&gt;no &#039;hurr durr screen on face&#039; allowed</span>",
+  "expected": "Discuss VR and VR games and accesories \n\n>no 'hurr durr gimmick' allowed\n>no 'mines better than urs' allowed\n>no 'hurr durr screen on face' allowed"
+ },
+ {
+  "no": 243059963,
+  "kind": "legacy",
+  "raw": "<a href=\"#p243023540\" class=\"quotelink\">&gt;&gt;243023540</a><br>Oh boy I&#039;ve been wanting to watch this. Already got it and tried converting it for viewing with ffmpeg but coudn&#039;t figure how to convert mdmv_pgs_subtitles in to hard subs. By off chance that you got the same rip I&#039;d like to hear how you got around that. I&#039;ve had the same problem with some other rips.<br><br>[code]<br>ffmpeg -i Royal\\ Space\\ Force\\ \\(The\\ Wings\\ of\\ Honneamise\\).mkv -vf &quot;subtitles=&#039;Royal\\ Space\\ Force\\ \\(The\\ Wings\\ of\\ Honneamise\\).mkv&#039;:si=1,format=yuv42<wbr>0p&quot; -c:a copy -c:v libx264 -tune animation -map 0:0 -map 0:2 Royal-Space-Force.mp4<br><br><br>Stream #0:0(eng): Video: h264 (High), yuv420p(tv, bt709, progressive), 1920x1088, SAR 1:1 DAR 30:17, 23.98 fps, 23.98 tbr, 1k tbn, 180k tbc (default)<br>Stream #0:1(eng): Audio: aac (LC), 48000 Hz, stereo, fltp (default)<br>Stream #0:2(jpn): Audio: aac (LC), 48000 Hz, stereo, fltp<br>Stream #0:3(eng): Subtitle: hdmv_pgs_subtitle<br>Stream #0:4(eng): Subtitle: hdmv_pgs_subtitle<br><br><br>[matroska,webm @ 0x56455590a380] Could not find codec parameters for stream 3 (Subtitle: hdmv_pgs_subtitle (pgssub)): unspecified size<br>Consider increasing the value for the &#039;analyzeduration&#039; and &#039;probesize&#039; options<br>[matroska,webm @ 0x56455590a380] Could not find codec parameters for stream 4 (Subtitle: hdmv_pgs_subtitle (pgssub)): unspecified size<br>Consider increasing the value for the &#039;analyzeduration&#039; and &#039;probesize&#039; options<br>[Parsed_subtitles_0 @ 0x564555260cc0] Using font provider fontconfig<br>[Parsed_subtitles_0 @ 0x564555260cc0] Only text based subtitles are currently supported<br>[AVFilterGraph @ 0x56455525d6c0] Error initializing filter &#039;subtitles&#039; with args &#039;Royal\\ Space\\ Force\\ \\(The\\ Wings\\ of\\ Honneamise\\).mkv:si=1&#039;<br>Error reinitializing filters!<br>Failed to inject frame into filter network: Not yet implemented in FFmpeg, patches welcome<br>Error while processing the decoded data for stream #0:0<br>Conversion failed!<br>[/code]",
+  "expected": ">>243023540\nOh boy I've been wanting to watch this. Already got it and tried converting it for viewing with ffmpeg but coudn't figure how to convert mdmv_pgs_subtitles in to hard subs. By off chance that you got the same rip I'd like to hear how you got around that. I've had the same problem with some other rips.\n\n[code]\nffmpeg -i Royal\\ Space\\ Force\\ \\(The\\ Wings\\ of\\ Honneamise\\).mkv -vf \"subtitles='Royal\\ Space\\ Force\\ \\(The\\ Wings\\ of\\ Honneamise\\).mkv':si=1,format=yuv420p\" -c:a copy -c:v libx264 -tune animation -map 0:0 -map 0:2 Royal-Space-Force.mp4\n\n\nStream #0:0(eng): Video: h264 (High), yuv420p(tv, bt709, progressive), 1920x1088, SAR 1:1 DAR 30:17, 23.98 fps, 23.98 tbr, 1k tbn, 180k tbc (default)\nStream #0:1(eng): Audio: aac (LC), 48000 Hz, stereo, fltp (default)\nStream #0:2(jpn): Audio: aac (LC), 48000 Hz, stereo, fltp\nStream #0:3(eng): Subtitle: hdmv_pgs_subtitle\nStream #0:4(eng): Subtitle: hdmv_pgs_subtitle\n\n\n[matroska,webm @ 0x56455590a380] Could not find codec parameters for stream 3 (Subtitle: hdmv_pgs_subtitle (pgssub)): unspecified size\nConsider increasing the value for the 'analyzeduration' and 'probesize' options\n[matroska,webm @ 0x56455590a380] Could not find codec parameters for stream 4 (Subtitle: hdmv_pgs_subtitle (pgssub)): unspecified size\nConsider increasing the value for the 'analyzeduration' and 'probesize' options\n[Parsed_subtitles_0 @ 0x564555260cc0] Using font provider fontconfig\n[Parsed_subtitles_0 @ 0x564555260cc0] Only text based subtitles are currently supported\n[AVFilterGraph @ 0x56455525d6c0] Error initializing filter 'subtitles' with args 'Royal\\ Space\\ Force\\ \\(The\\ Wings\\ of\\ Honneamise\\).mkv:si=1'\nError reinitializing filters!\nFailed to inject frame into filter network: Not yet implemented in FFmpeg, patches welcome\nError while processing the decoded data for stream #0:0\nConversion failed!\n[/code]"
+ },
+ {
+  "no": 248793531,
+  "kind": "legacy",
+  "raw": "<a href=\"#p248793168\" class=\"quotelink\">&gt;&gt;248793168</a><br><a href=\"#p248793369\" class=\"quotelink\">&gt;&gt;248793369</a><span class=\"fortune\" style=\"color:#bac200\"><br><br><b>Your fortune: Average Luck</b></span>",
+  "expected": ">>248793168\n>>248793369\n\nYour fortune: Average Luck"
+ },
+ {
+  "no": 248800986,
+  "kind": "legacy",
+  "raw": "<a href=\"#p248800719\" class=\"quotelink\">&gt;&gt;248800719</a><br>affordable GOOD hardware<div class=\"like-perk-cnt\"><img alt=\"\" width=\"160\" height=\"160\" src=\"//s.4cdn.org/image/xmashat.gif\"></div>",
+  "expected": ">>248800719\naffordable GOOD hardware"
+ },
+ {
+  "no": 248833381,
+  "kind": "legacy",
+  "raw": "<a href=\"#p248833258\" class=\"quotelink\">&gt;&gt;248833258</a><br>They were working on Steam Controller, it&#039;s software that now applies to EVERY controller, Steam OS and SteamVR and now the Index HMD with the best VR controllers to date instead.<br>Concede you nigger faggot.<div class=\"like-perk-cnt\"><div style=\"text-align:right\"><img alt=\"\" width=\"32\" height=\"32\" src=\"//s.4cdn.org/image/temp/verified.png\"></div></div>",
+  "expected": ">>248833258\nThey were working on Steam Controller, it's software that now applies to EVERY controller, Steam OS and SteamVR and now the Index HMD with the best VR controllers to date instead.\nConcede you nigger faggot."
+ },
+ {
+  "no": 471761217,
+  "kind": "legacy",
+  "raw": "It sucks that you have to reload the page to see pics.<div class=\"xa24desu\"></div>",
+  "expected": "It sucks that you have to reload the page to see pics."
+ },
+ {
+  "no": 378414241,
+  "kind": "legacy",
+  "raw": "<a href=\"#p378408743\" class=\"quotelink\">&gt;&gt;378408743</a><br><img class=\"xae\" data-xae width=\"32\" height=\"31\" src=\"https://s.4cdn.org/image/emotes/0ee6ba1c_FeelsStrongMan.png\"><br>wish I could&#039;ve been there pypybros",
+  "expected": ">>378408743\n\nwish I could've been there pypybros"
+ },
+ {
+  "no": 424283256,
+  "kind": "legacy",
+  "raw": "Let me in for PAvlov AAAAA<div class=\"xa23b\"><span class=\"xa23t\"></span><span class=\"xa23i\"></span></div>",
+  "expected": "Let me in for PAvlov AAAAA"
+ },
+ {
+  "no": 248867583,
+  "kind": "legacy",
+  "raw": "<a href=\"#p248867480\" class=\"quotelink\">&gt;&gt;248867480</a><br>Your lego creations in a modelling program imported into a video game dev engine is on topic VR content.<br>I concede.<div class=\"like-perk-cnt\"><marquee direction=\"left\" width=\"250\" height=\"50\" behavior=\"alternate\">\r\n<marquee direction=\"down\" height=\"50\" behavior=\"alternate\">&#x26BE;</marquee>\r\n</marquee></div>",
+  "expected": ">>248867480\nYour lego creations in a modelling program imported into a video game dev engine is on topic VR content.\nI concede."
+ },
+ {
+  "no": 201534763,
+  "kind": "legacy",
+  "raw": "<span class=\"quote\">&gt;past week of VR was nothing but straight garbage</span><br><span class=\"quote\">&gt;leave</span><br><span class=\"quote\">&gt;come back today and give it another shot</span><br><span class=\"quote\">&gt;actually had a great time and met some cool people</span><br><a href=\"http://i.4cdn.org/wsg/1515711568276.webm\" target=\"_blank\">http://i.4cdn.org/wsg/1515711568276<wbr>.webm</a>",
+  "expected": ">past week of VR was nothing but straight garbage\n>leave\n>come back today and give it another shot\n>actually had a great time and met some cool people\nhttp://i.4cdn.org/wsg/1515711568276.webm"
+ },
+ {
+  "no": 162104980,
+  "kind": "legacy",
+  "raw": "This tool will bypass Steam VR&#039;s hardware check, allowing you to run Vive-exclusive games on an Oculus Rift (namely, Google Earth VR).<br><br>https://github.com/Shockfire/FakeVi<wbr>ve",
+  "expected": "This tool will bypass Steam VR's hardware check, allowing you to run Vive-exclusive games on an Oculus Rift (namely, Google Earth VR).\n\nhttps://github.com/Shockfire/FakeVive"
+ },
+ {
+  "no": 378498256,
+  "kind": "legacy",
+  "raw": "<span class=\"xae\" data-xae=\"baw\">😭</span><span class=\"xae\" data-xae=\"baw\">😭</span><span class=\"xae\" data-xae=\"baw\">😭</span>",
+  "expected": "😭😭😭"
+ },
+ {
+  "no": 520649835,
+  "kind": "live",
+  "raw": "&quot;Virtual Reality, Real Suffering&quot;<br>Ready For Launch Edition<br><br>Headset Selection: https://rentry.org/vrgheadsets<br>Game Recommendations: https://rentry.org/gxrov<br>VRC Screenshots by World: https://vrg.party/worlds.html<br><br><span class=\"quote\">&gt;Game Resources</span><br>Assets: https://vrg.booru.org/<br>Guides for Avatar and World Dev: https://rentry.org/4tzqs<br>Assetto Corsa: https://rentry.org/hrq69<br>WRC Club: https://rentry.org/vrgwrc23<br>VTOL VR: https://rentry.org/5nuk4<br>Minecraft (Dungeon Crawling): https://crawler.vrg.party<br>Fallout 4: https://rentry.org/pofw5<br>Bonelab: https://rentry.org/bonerlabeu<br><br><span class=\"quote\">&gt;Regularly Hosted Multiplayer Games</span><br>Monday - EU Assetto Corsa: 18:00 UTC / 20:00 CEST (every other week)<br>Tuesday - EU Pavlov: 18:00 UTC / 20:00 CEST<br>Wednesday - NA Assetto Corsa: 8PM ET<br>Thursday - NA Walkabout Minigolf: 10PM ET<br>Friday - NA Pavlov: 11PM ET (every other week)<br>Friday - EU VRFPS: 18:00 UTC / 20:00 CEST (Game varies, watch the thread)<br>Saturday - SEA/EU Walkabout Minigolf: 12:00 UTC / 23:00 AEDT<br>Saturday - EU Bonelab: 19:00 UTC<br><br><span class=\"quote\">&gt;Regularly Hosted VRChat Events</span><br>https://rentry.org/mxotqvmh<br><br>New threads: <a href=\"//boards.4chan.org/vg/catalog#s=vrg\" class=\"quotelink\">&gt;&gt;&gt;/vg/vrg</a><br><br>Old thread: <a href=\"/vg/thread/520375384#p520375384\" class=\"quotelink\">&gt;&gt;520375384</a><br><br><span class=\"quote\">&gt;Upcoming Events</span><br>May 16 - Chorketown Harvest Festival <a href=\"/vg/thread/519919648#p519960295\" class=\"quotelink\">&gt;&gt;519960295</a>",
+  "expected": "\"Virtual Reality, Real Suffering\"\nReady For Launch Edition\n\nHeadset Selection: https://rentry.org/vrgheadsets\nGame Recommendations: https://rentry.org/gxrov\nVRC Screenshots by World: https://vrg.party/worlds.html\n\n>Game Resources\nAssets: https://vrg.booru.org/\nGuides for Avatar and World Dev: https://rentry.org/4tzqs\nAssetto Corsa: https://rentry.org/hrq69\nWRC Club: https://rentry.org/vrgwrc23\nVTOL VR: https://rentry.org/5nuk4\nMinecraft (Dungeon Crawling): https://crawler.vrg.party\nFallout 4: https://rentry.org/pofw5\nBonelab: https://rentry.org/bonerlabeu\n\n>Regularly Hosted Multiplayer Games\nMonday - EU Assetto Corsa: 18:00 UTC / 20:00 CEST (every other week)\nTuesday - EU Pavlov: 18:00 UTC / 20:00 CEST\nWednesday - NA Assetto Corsa: 8PM ET\nThursday - NA Walkabout Minigolf: 10PM ET\nFriday - NA Pavlov: 11PM ET (every other week)\nFriday - EU VRFPS: 18:00 UTC / 20:00 CEST (Game varies, watch the thread)\nSaturday - SEA/EU Walkabout Minigolf: 12:00 UTC / 23:00 AEDT\nSaturday - EU Bonelab: 19:00 UTC\n\n>Regularly Hosted VRChat Events\nhttps://rentry.org/mxotqvmh\n\nNew threads: >>>/vg/vrg\n\nOld thread: >>520375384\n\n>Upcoming Events\nMay 16 - Chorketown Harvest Festival >>519960295"
+ },
+ {
+  "no": 520719905,
+  "kind": "live",
+  "raw": "<a href=\"#p520719768\" class=\"quotelink\">&gt;&gt;520719768</a><br><s>I do that unironically very often. </s>",
+  "expected": ">>520719768\n[spoiler]I do that unironically very often. [/spoiler]"
+ },
+ {
+  "no": 520720291,
+  "kind": "live",
+  "raw": "<span class=\"deadlink\">&gt;&gt;520719309</span><br>OLED &gt; LCD<br>any day of the fucking week, LCDs look like utter fucking dogshit, Quest 3 displays are terrible<br>and the lenses are good, theyre far better than what ever the fucking dogshit they put in the Bigscreen Beyond. Yeah theyre not as good clarity as the Quest 3 but thats fine cause theyre still usable and pretty decent clarity. <br>Glare is the only thing to note that makes the lenses bad.<br>Id rather take the PSVR2 over any other headset on the market currently",
+  "expected": ">>520719309\nOLED > LCD\nany day of the fucking week, LCDs look like utter fucking dogshit, Quest 3 displays are terrible\nand the lenses are good, theyre far better than what ever the fucking dogshit they put in the Bigscreen Beyond. Yeah theyre not as good clarity as the Quest 3 but thats fine cause theyre still usable and pretty decent clarity. \nGlare is the only thing to note that makes the lenses bad.\nId rather take the PSVR2 over any other headset on the market currently"
+ },
+ {
+  "no": 521488367,
+  "kind": "live",
+  "raw": "<a href=\"#p521488217\" class=\"quotelink\">&gt;&gt;521488217</a><br>nah, they tend to be namedropping next to instance posts with &quot;join on &lt;X&gt;&quot;. i&#039;m sure he has a silly little list stashed in notepad somewhere because he thinks he can make any impact with that one day",
+  "expected": ">>521488217\nnah, they tend to be namedropping next to instance posts with \"join on <X>\". i'm sure he has a silly little list stashed in notepad somewhere because he thinks he can make any impact with that one day"
+ },
+ {
+  "no": 521518359,
+  "kind": "live",
+  "raw": "<a href=\"#p521516187\" class=\"quotelink\">&gt;&gt;521516187</a><br><a href=\"https://boards.4chan.org/vg/catalog#s=/vrg/\" target=\"_blank\">https://boards.4chan.org/vg/catalog<wbr>#s=/vrg/</a><br>You&#039;re welcome",
+  "expected": ">>521516187\nhttps://boards.4chan.org/vg/catalog#s=/vrg/\nYou're welcome"
+ },
+ {
+  "no": 566500046,
+  "kind": "live",
+  "raw": "<a href=\"#p566499729\" class=\"quotelink\">&gt;&gt;566499729</a><br>lmao hahaha",
+  "expected": ">>566499729\nlmao hahaha"
+ }
+]
