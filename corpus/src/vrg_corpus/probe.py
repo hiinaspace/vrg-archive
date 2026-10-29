@@ -12,6 +12,7 @@ import time
 import urllib.error
 import urllib.request
 from collections import defaultdict
+from datetime import UTC, datetime
 from pathlib import Path
 
 import duckdb
@@ -188,7 +189,7 @@ def report(log: Path) -> str:
     )
     out.append("")
     if stops:
-        out.append("**Probe stopped early:** " + "; ".join(s["reason"] for s in stops))
+        out.append("**Probe stopped:** " + "; ".join(s["reason"] for s in stops))
     else:
         out.append("Probe ran to completion with no 429/403 and no error streak.")
     out += [
@@ -229,7 +230,29 @@ def report(log: Path) -> str:
             f"{agree} confirmed live by the API+HEAD."
         )
         out.append("")
+    found_ts = [r["ts"] for r in b4k if r["found"]]
+    missing_ts = [r["ts"] for r in b4k if r["api_status"] == 200 and not r["found"]]
+    if found_ts and missing_ts:
+        lo = datetime.fromtimestamp(min(found_ts), UTC).strftime("%Y-%m-%d")
+        hi = datetime.fromtimestamp(max(missing_ts), UTC).strftime("%Y-%m-%d")
+        out += [
+            "**Coverage boundary.** In the sample, the earliest post b4k has is dated "
+            f"{lo} and the latest it lacks is dated {hi}: b4k has /vg/ history from about "
+            "2019-08 on and nothing before (the earliest b4k-sourced row in the parquet is also "
+            "2019-08-26). Every post b4k has in the sample also has a thumbnail that answers "
+            "HEAD 200 (no 'found, no thumb' or 404 cases), whether or not the parquet row "
+            "carried a `thumb_link`.",
+            "",
+        ]
     out += ["## Misses checked on archived.moe (at most 10 per year)", ""]
+    if any("archived.moe" in x["reason"] for x in stops):
+        out += [
+            "**Not done.** The first archived.moe request returned HTTP 403, and the brief says "
+            "to stop at the first 403, so the probe stopped there and did not retry. All 800 "
+            "b4k records were complete before it. Whether archived.moe has the 2018 to 2019-07 "
+            "misses is unknown; it needs a browser-like fetch or a manual look.",
+            "",
+        ]
     if moe:
         out += ["| year | checked | found on moe | thumb HEAD 200 |", "|---|---|---|---|"]
         for y in sorted({r["year"] for r in moe}):
@@ -238,8 +261,8 @@ def report(log: Path) -> str:
                 f"| {y} | {len(rs)} | {sum(r['found'] for r in rs)} | "
                 f"{sum(has_thumb(r) for r in rs)} |"
             )
-    else:
-        out.append("None checked.")
+    elif not stops:
+        out.append("None needed.")
     out += ["", "## Example records", ""]
     for r in b4k[:2] + moe[:2]:
         out.append("    " + json.dumps(r))
