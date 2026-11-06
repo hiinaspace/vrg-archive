@@ -14,6 +14,16 @@ def main(argv: list[str] | None = None) -> int:
     p = sub.add_parser("build", help="build the merged corpus SQLite")
     p.add_argument("snapdir", type=Path)
     p.add_argument("outdir", type=Path)
+    p = sub.add_parser(
+        "b4k-supplement", help="fetch b4k-only posts into a JSONL (few API requests)"
+    )
+    p.add_argument("out", type=Path)
+    p.add_argument("--snapdir", type=Path, required=True)
+    p.add_argument("--interval", type=float, default=1.0)
+    p = sub.add_parser("b4k-supplement-thumbs", help="fetch the supplement's own thumbnails")
+    p.add_argument("jsonl", type=Path)
+    p.add_argument("store", type=Path)
+    p.add_argument("--interval", type=float, default=1.0)
     p = sub.add_parser("gate", help="write gate.md")
     p.add_argument("snapdir", type=Path)
     p.add_argument("corpus", type=Path)
@@ -47,6 +57,17 @@ def main(argv: list[str] | None = None) -> int:
         print(json.dumps({k: v for k, v in rep.items() if k != "overlap"}, indent=1))
         ov = rep["overlap"]
         print("overlap:", ov["overlap_posts"], "identical:", ov["identical_rows"])
+        return 0
+    if args.cmd == "b4k-supplement":
+        from . import b4k_supplement
+
+        n = b4k_supplement.fetch(args.snapdir, args.out, interval=args.interval)
+        print("supplement posts:", n)
+        return 0
+    if args.cmd == "b4k-supplement-thumbs":
+        from . import b4k_supplement
+
+        print(b4k_supplement.fetch_thumbs(args.jsonl, args.store, args.interval))
         return 0
     if args.cmd == "gate":
         from . import reports

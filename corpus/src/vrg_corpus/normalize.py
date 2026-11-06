@@ -177,6 +177,17 @@ def from_parquet(r: dict[str, Any], c: Counters) -> Post | None:
     )
 
 
+def from_b4k(r: dict[str, Any], c: Counters) -> Post | None:
+    """r is a b4k-supplement row (parquet-shaped, plain foolfuuka text); see b4k_supplement.rows.
+
+    b4k's own ``deleted`` flag becomes ``deleted``; a banned media record becomes ``file_deleted``.
+    """
+    p = from_parquet(r, c)
+    if p is None:
+        return None
+    return p._replace(file_deleted=int(r.get("_file_deleted") or 0))
+
+
 def from_live(r: dict[str, Any], c: Counters) -> Post:
     """r is a live posts row. capcode 'N' marks b4k-backfilled rows (plain text, usually)."""
     backfilled = r["capcode"] == "N"

@@ -10,7 +10,7 @@ from typing import Any
 
 import duckdb
 
-from . import normalize
+from . import b4k_supplement, normalize
 from .normalize import CUTOFF, POST_COLS, Counters, Post
 
 PARQUET = "vrgarchive-2025-04-11.parquet"
@@ -136,6 +136,7 @@ def build(snapdir: Path, outdir: Path) -> dict[str, Any]:
     pq_overlap: dict[int, Post] = {}
     pq_rows_total = 0
     pq_inserted = 0
+    have: set[int] = set(live)
     quotes: list[tuple[int, int]] = []
     buf: list[Post] = []
 
@@ -175,10 +176,29 @@ def build(snapdir: Path, outdir: Path) -> dict[str, Any]:
             # deleted flag of their own, so infer it.
             p = p._replace(deleted=1)
         add(p)
+        have.add(p.no)
         pq_inserted += 1
     for no in sorted(live):
         c.rows["live"] += 1
         add(live[no])
+    # third source, lowest priority: b4k-only posts (absent from both snapshots)
+    sup_path = snapdir / b4k_supplement.FILENAME
+    sup_inserted = 0
+    if sup_path.exists():
+        for r in b4k_supplement.rows(sup_path):
+            c.rows["b4k_supplement"] += 1
+            p = normalize.from_b4k(r, c)
+            if p is None or p.no in have:
+                continue
+            if r["is_op"]:
+                thread_subject.setdefault(p.thread_no, p.sub)
+            elif r["thread_title"] and p.thread_no not in thread_title_any:
+                title = normalize.text_field(r["thread_title"], False)
+                if title:
+                    thread_title_any[p.thread_no] = title
+            add(p)
+            have.add(p.no)
+            sup_inserted += 1
     flush()
 
     # thread subjects / archive times from the live threads table (live wins for >= CUTOFF)
@@ -226,6 +246,8 @@ def build(snapdir: Path, outdir: Path) -> dict[str, Any]:
         "parquet_rows": pq_rows_total,
         "parquet_rows_inserted": pq_inserted,
         "live_rows": len(live),
+        "b4k_supplement_rows": c.rows["b4k_supplement"],
+        "b4k_supplement_inserted": sup_inserted,
         "live_backfill_rows_with_html": c.rows["backfill_html"],
         "ghost_posts_skipped": c.ghosts,
         "bad_md5": c.bad_md5,
