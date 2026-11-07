@@ -10,11 +10,12 @@ from typing import Any
 
 import duckdb
 
-from . import b4k_supplement, normalize
+from . import b4k_flags, b4k_supplement, normalize
 from .normalize import CUTOFF, POST_COLS, Counters, Post
 
 PARQUET = "vrgarchive-2025-04-11.parquet"
 LIVE = "vrgscraper-archive.sqlite"
+SINCE = 1566777600  # b4k /vg/ starts about here; older legacy rows cannot be flagged
 
 SCHEMA = """
 CREATE TABLE post (
@@ -111,6 +112,24 @@ def compare_overlap(pq: dict[int, Post], live: dict[int, Post]) -> dict[str, Any
     }
 
 
+def apply_flags(p: Post, f: b4k_flags.Flags | None, fl: dict[str, int]) -> Post:
+    """Add b4k's spoiler / deleted / media-banned flags to a legacy row. Never clears a flag."""
+    if f is None:
+        if p.time >= SINCE:
+            fl["unmatched"] += 1
+        return p
+    if f.spoiler and p.file_name is not None and not p.file_spoiler:
+        p = p._replace(file_spoiler=1)
+        fl["spoiler"] += 1
+    if f.deleted and not p.deleted:
+        p = p._replace(deleted=1)
+        fl["deleted"] += 1
+    if f.banned and p.file_name is not None and not p.file_deleted:
+        p = p._replace(file_deleted=1)
+        fl["file_deleted"] += 1
+    return p
+
+
 def build(snapdir: Path, outdir: Path) -> dict[str, Any]:
     outdir.mkdir(parents=True, exist_ok=True)
     dest = outdir / "vrgarchive.sqlite"
@@ -118,6 +137,11 @@ def build(snapdir: Path, outdir: Path) -> dict[str, Any]:
     for p in (tmp, Path(str(tmp) + "-journal")):
         p.unlink(missing_ok=True)
     c = Counters()
+    flags: dict[int, b4k_flags.Flags] = {}
+    flags_path = snapdir / b4k_flags.FILENAME
+    if flags_path.exists():
+        flags = b4k_flags.load(flags_path)
+    fl = {"loaded": len(flags), "spoiler": 0, "deleted": 0, "file_deleted": 0, "unmatched": 0}
 
     live_db = sqlite3.connect(f"file:{snapdir / LIVE}?mode=ro", uri=True)
     live_rows = _live_dicts(live_db, "select * from posts order by no")
@@ -167,6 +191,8 @@ def build(snapdir: Path, outdir: Path) -> dict[str, Any]:
             title = normalize.text_field(r["thread_title"], r["subnum"] is None)
             if title:
                 thread_title_any[p.thread_no] = title
+        if p.source == "legacy" and flags and p.no < CUTOFF:
+            p = apply_flags(p, flags.get(p.no), fl)
         if p.no >= CUTOFF:
             pq_overlap[p.no] = p
             if p.no in live:
@@ -246,6 +272,7 @@ def build(snapdir: Path, outdir: Path) -> dict[str, Any]:
         "parquet_rows": pq_rows_total,
         "parquet_rows_inserted": pq_inserted,
         "live_rows": len(live),
+        "b4k_flags": fl if flags else None,
         "b4k_supplement_rows": c.rows["b4k_supplement"],
         "b4k_supplement_inserted": sup_inserted,
         "live_backfill_rows_with_html": c.rows["backfill_html"],

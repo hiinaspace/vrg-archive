@@ -47,6 +47,15 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--interval", type=float, default=1.0, help="seconds between requests (>=0.5)")
     p.add_argument("--limit", type=int, default=None, help="stop after N thumbnail fetches")
 
+    p = sub.add_parser(
+        "b4k-flags", help="polite resumable fetch of legacy-era spoiler/deleted flags"
+    )
+    p.add_argument("corpus", type=Path, help="corpus SQLite (picks the legacy-era threads)")
+    p.add_argument("out", type=Path, help="b4k-flags.jsonl (appended; resumable)")
+    p.add_argument("--store", type=Path, required=True, help="dir for STOP file and request state")
+    p.add_argument("--interval", type=float, default=1.0)
+    p.add_argument("--limit", type=int, default=None, help="stop after N threads")
+
     args = ap.parse_args(argv)
     if args.cmd == "build":
         import json
@@ -69,6 +78,10 @@ def main(argv: list[str] | None = None) -> int:
 
         print(b4k_supplement.fetch_thumbs(args.jsonl, args.store, args.interval))
         return 0
+    if args.cmd == "b4k-flags":
+        from . import b4k_flags
+
+        return b4k_flags.fetch(args.corpus, args.out, args.store, args.interval, args.limit)
     if args.cmd == "gate":
         from . import reports
 
