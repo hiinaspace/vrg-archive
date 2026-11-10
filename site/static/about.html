@@ -8,21 +8,32 @@ td,th{padding:2px 12px 2px 0;text-align:left;vertical-align:top}</style>
 <nav class="nv"><a href="./">Search</a> <a href="t/">Threads</a> <a href="about.html">About</a></nav>
 <main>
 <h1>About this archive</h1>
-<p>An archive of the 4chan /vg/ <b>/vrg/ (Virtual Reality General)</b> threads, searchable in your browser. There is no server:
-the search runs in JavaScript over static index files. There is no search server and no query logging; your query lives in the page URL.</p>
+<h2>What this is</h2>
+<p>A searchable archive of the 4chan /vg/ <b>/vrg/ (Virtual Reality General)</b> threads, kept for people who want to find an old post, link, or discussion.
+It is an unofficial hobby project, not affiliated with 4chan, b4k, or any poster. It is not a mirror of 4chan, not a live board, and not a place to post;
+it does not serve full-size images and it is not a complete record: some posts and thumbnails are missing (see below).</p>
 <h2 id="data">What is indexed</h2>
-<p>__POSTS__ posts in __THREADS__ threads, __FIRST__ to __LAST__ (UTC). The data came from the 4chan API (2025-04 onward), from an
-earlier archive export (before that), and from <a href="https://arch.b4k.dev/vg/">b4k</a> (arch.b4k.dev) for posts and thumbnails the other sources missed. Only threads whose last post is more than 7 days old are published, so moderator deletions have
-settled first. Data as of __SNAP__.</p>
-<p><b>Posts known to be deleted are excluded</b> everywhere: not in the search index, not on thread pages, not in quote previews. The 2016&ndash;2025-04 export carries no deletion flags, so a post deleted on 4chan in that era can still appear here; ask for a takedown below. A <code>&gt;&gt;N</code> that points
-at a missing or excluded post is shown as plain text. Images are never served in full. Thumbnails are the small previews 4chan
-published, shown only for posts whose file was not deleted; spoilered thumbnails stay blurred until clicked. Older posts show
-a placeholder with the file name and dimensions instead.</p>
-<h2>Takedowns</h2>
-<p>To have a post, thread or image removed, contact <a href="mailto:hiina@hiina.space">hiina@hiina.space</a> with the post number (<code>No.123456789</code>). Removals are listed in
-<code>excluded_ids.txt</code> and applied at the next build; urgent ones are rebuilt by hand.</p>
+<p>__POSTS__ posts in __THREADS__ threads, __FIRST__ to __LAST__ (UTC). Data as of __SNAP__.</p>
+<p><b>Sources and credit.</b> Posts come from the 4chan API (2025-04 onward), from an earlier archive export of the board (before that), and from
+<a href="https://arch.b4k.dev/vg/">b4k</a> (arch.b4k.dev), which supplied posts and thumbnails the other sources missed. Thanks to the 4chan archivists, to b4k, and to the author of the earlier export.
+Post text and thumbnails belong to their posters and sources; this site only indexes them.</p>
+<p><b>Shown:</b> post text, post number, time, poster name or tripcode if any (almost all are Anonymous), file name and dimensions, and small thumbnails.
+<b>Not shown:</b> full-size images or video, IP addresses, or any poster identifier beyond what 4chan itself published (/vg/ has no poster IDs).
+Thumbnails are the small previews 4chan or b4k published; spoilered ones stay blurred until clicked, where the source recorded the spoiler. Most posts from before 2019-08 show a placeholder with the file name and dimensions instead.</p>
+<p><b>Deleted posts are excluded</b> everywhere: not in the search index, not on thread pages, not in quote previews, and posts whose file was deleted get no thumbnail. Deletion flags for 2019-08 to 2025-04 come from b4k; posts from before 2019-08, and the few b4k no longer has,
+carry no deletion flag, so a post deleted on 4chan can still appear here; ask for a takedown below. A <code>&gt;&gt;N</code> that points at a missing or excluded post is shown as plain text.</p>
+<h2>Refresh</h2>
+<p>Rebuilt from time to time (a weekly rebuild is planned). Only threads whose last post is more than 7 days old are published, so moderator deletions have settled first.</p>
+<h2>Privacy</h2>
+<p>The site is static files with no search server and no accounts; search runs in your browser, and your query lives only in the page URL. The site itself keeps no logs and sets no cookies.
+It is served by Cloudflare Pages, which, like any host, may process request metadata (such as IP addresses) under its own <a href="https://www.cloudflare.com/privacypolicy/">privacy policy</a>; we do not receive it.
+Thread pages may be indexed by search engines; the search page and index files are marked <code>noindex</code>.</p>
+<h2 id="takedowns">Takedowns</h2>
+<p>Posts and images can be removed for illegal content, private personal information, or copyright. Email <a href="mailto:hiina@hiina.space">hiina@hiina.space</a> with the post number (<code>No.123456789</code>; the number is in the page URL and
+<code>/p/?N</code> links). Removals take effect at the next build; illegal content and other urgent cases are rebuilt by hand within 3 days. Full details: <a href="takedown.html">takedown policy</a>.
+Removal here does not remove anything from 4chan or b4k.</p>
 <h2>Data export</h2>
-<p>The old version of this site offered a downloadable DuckDB/Parquet dump of the archive. A full data export is still available on request: contact <a href="mailto:hiina@hiina.space">hiina@hiina.space</a>.</p>
+<p>The old version of this site offered a downloadable DuckDB/Parquet dump of the archive. A data export of the published posts (what this site shows, without removed or deleted posts) is available on request: contact <a href="mailto:hiina@hiina.space">hiina@hiina.space</a>.</p>
 <h2>Search syntax</h2>
 <table>
 <tr><th><code>quest pro</code></th><td>all words (case-insensitive; digits count; plurals are folded)</td></tr>

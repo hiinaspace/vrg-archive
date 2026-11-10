@@ -68,7 +68,7 @@ def build(
     # static files
     for name in ("thread.css", "thread.js"):
         shutil.copy(SITE_DIR / "static" / name, out / "t" / name)
-    for name in ("robots.txt", "_headers", "NOTICE.txt"):
+    for name in ("robots.txt", "_headers", "NOTICE.txt", "takedown.html"):
         shutil.copy(SITE_DIR / "static" / name, out / name)
     fmt = lambda ts: datetime.fromtimestamp(ts, UTC).strftime("%Y-%m-%d")  # noqa: E731
     about = (SITE_DIR / "static" / "about.html").read_text()
