@@ -176,6 +176,7 @@ def render_all(
     thumbs: dict[int, tuple[int, int, int, int, int]],
     out: Path,
     log=print,
+    ver: str = "",
 ) -> dict:
     t0 = time.time()
     out.mkdir(parents=True, exist_ok=True)
@@ -204,12 +205,12 @@ def render_all(
                 break
         desc = esc(first_text[:200])
         head = (
-            '<!doctype html><html lang="en"><head><meta charset="utf-8">'
+            f'<!doctype html><html lang="en" data-v="{ver}"><head><meta charset="utf-8">'
             '<meta name="viewport" content="width=device-width,initial-scale=1">'
             f"<title>{esc(t.subject)} - archive.vrg.party</title>"
             f'<meta name="description" content="{desc}">'
             f'<link rel="canonical" href="{SITE}/t/{t.no}.html">'
-            '<link rel="stylesheet" href="thread.css">'
+            f'<link rel="stylesheet" href="thread.css?v={ver}">'
             "</head><body>"
         )
         parts = [head, _nav(prev_t, next_t)]
@@ -236,7 +237,7 @@ def render_all(
             )
         parts.append("</div>")
         parts.append(_nav(prev_t, next_t))
-        parts.append('<script src="thread.js" defer></script></body></html>')
+        parts.append(f'<script src="thread.js?v={ver}" defer></script></body></html>')
         doc = "".join(parts)
         data = doc.encode()
         sizes.append(len(data))
@@ -252,10 +253,10 @@ def render_all(
             f"<td>{t.n_posts}</td><td>{t.n_images}</td></tr>"
         )
     (out / "index.html").write_text(
-        '<!doctype html><html lang="en"><head><meta charset="utf-8">'
+        f'<!doctype html><html lang="en" data-v="{ver}"><head><meta charset="utf-8">'
         '<meta name="viewport" content="width=device-width,initial-scale=1">'
         "<title>All threads - archive.vrg.party</title>"
-        f'<link rel="canonical" href="{SITE}/t/"><link rel="stylesheet" href="thread.css"></head><body>'
+        f'<link rel="canonical" href="{SITE}/t/"><link rel="stylesheet" href="thread.css?v={ver}"></head><body>'
         '<nav class="nv"><a href="../">Search</a> <a href="./">Threads</a> '
         '<a href="../about.html">About</a></nav>'
         '<header class="th-h"><h1>/vrg/ threads</h1></header>'

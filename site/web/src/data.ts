@@ -17,8 +17,13 @@ export async function gunzip(buf: Uint8Array): Promise<Uint8Array> {
 export class HttpStore implements Store {
   stats = { bytes: 0, requests: 0 };
   private whole = new Map<string, Promise<Uint8Array>>();
-  constructor(public base: string) {}
-  private url(p: string) { return new URL(p, this.base).href; }
+  /** `ver` is the build id; it goes on every URL so an edge cache can never mix files from two builds */
+  constructor(public base: string, public ver = "") {}
+  private url(p: string) {
+    const u = new URL(p, this.base);
+    if (this.ver) u.searchParams.set("v", this.ver);
+    return u.href;
+  }
   async bin(path: string): Promise<Uint8Array> {
     const r = await fetch(this.url(path));
     if (!r.ok) throw new Error(`${path}: HTTP ${r.status}`);

@@ -18,7 +18,8 @@
     var ds = new DecompressionStream("gzip");
     return new Uint8Array(await new Response(new Blob([buf]).stream().pipeThrough(ds)).arrayBuffer());
   }
-  Promise.all([fetch(key + ".bin"), fetch("threads.bin")]).then(async function (rs) {
+  var v = "?v=__VER__";
+  Promise.all([fetch(key + ".bin" + v), fetch("threads.bin" + v)]).then(async function (rs) {
     if (!rs[0].ok) throw 0;
     var b = await gunzip(await rs[0].arrayBuffer()), st = { p: 0 }, cur = 0, hit = -1;
     while (st.p < b.length) { cur += varint(b, st); var t = varint(b, st); if (cur === no) { hit = t; break; } if (cur > no) break; }

@@ -29,6 +29,9 @@ def build(
     log=print,
 ) -> dict:
     t0 = time.time()
+    # build id, appended as ?v= to every data/CSS/JS URL so a CDN caching by path can't serve
+    # one build's manifest with another build's binaries (cols/manifest mismatch, bad offsets)
+    ver = format(int(t0), "x")
     if out.exists():
         shutil.rmtree(out)
     out.mkdir(parents=True)
@@ -62,13 +65,19 @@ def build(
     )
     shift = index.PERM_SHIFT
     (out / "p" / "index.html").write_text(
-        (SITE_DIR / "static" / "permalink.html").read_text().replace("__SHIFT__", str(shift))
+        (SITE_DIR / "static" / "permalink.html")
+        .read_text()
+        .replace("__SHIFT__", str(shift))
+        .replace("__VER__", ver)
     )
-    stats.update(threads.render_all(cor, quotes, loc, out / "t", log=log))
+    stats.update(threads.render_all(cor, quotes, loc, out / "t", log=log, ver=ver))
     # static files
     for name in ("thread.css", "thread.js"):
         shutil.copy(SITE_DIR / "static" / name, out / "t" / name)
-    for name in ("robots.txt", "_headers", "NOTICE.txt", "takedown.html"):
+    (out / "takedown.html").write_text(
+        (SITE_DIR / "static" / "takedown.html").read_text().replace("__VER__", ver)
+    )
+    for name in ("robots.txt", "_headers", "NOTICE.txt"):
         shutil.copy(SITE_DIR / "static" / name, out / name)
     fmt = lambda ts: datetime.fromtimestamp(ts, UTC).strftime("%Y-%m-%d")  # noqa: E731
     about = (SITE_DIR / "static" / "about.html").read_text()
@@ -78,6 +87,7 @@ def build(
         "__FIRST__": fmt(cor.posts[0][C.TIME]),
         "__LAST__": fmt(cor.posts[-1][C.TIME]),
         "__SNAP__": fmt(snapshot),
+        "__VER__": ver,
     }.items():
         about = about.replace(k, v)
     (out / "about.html").write_text(about)
@@ -87,7 +97,10 @@ def build(
         f'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>{threads.SITE}/t/</loc></url>{urls}</urlset>'
     )
     if not skip_web:
-        subprocess.run(["node", "build.mjs", "--out", str(out)], cwd=SITE_DIR / "web", check=True)
+        subprocess.run(
+            ["node", "build.mjs", "--out", str(out), "--ver", ver], cwd=SITE_DIR / "web", check=True
+        )
+    stats["ver"] = ver
     stats["corpus_stats"] = cor.stats
     stats["total_s"] = time.time() - t0
     files = [f for f in out.rglob("*") if f.is_file()]

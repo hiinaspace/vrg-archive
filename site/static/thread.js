@@ -3,6 +3,7 @@
 (function () {
   "use strict";
   var base = new URL("../data/thumbs/", document.baseURI);
+  var ver = document.documentElement.dataset.v; // build id: keeps edge-cached packs from another build out
   var store;
   try { store = window.localStorage; } catch (e) { store = null; }
 
@@ -31,7 +32,9 @@
   var els = Array.prototype.slice.call(document.querySelectorAll(".th[data-t]"));
   var whole = {};
   function fetchRange(pack, off, len) {
-    var url = new URL("pack" + pack + ".bin", base).href;
+    var u = new URL("pack" + pack + ".bin", base);
+    if (ver) u.searchParams.set("v", ver);
+    var url = u.href;
     if (whole[pack]) return whole[pack].then(function (b) { return b.slice(off, off + len); });
     return fetch(url, { headers: { Range: "bytes=" + off + "-" + (off + len - 1) } }).then(function (r) {
       if (r.status === 206) return r.arrayBuffer();

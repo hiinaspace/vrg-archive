@@ -16,7 +16,8 @@ const PAGE = 25;
 const SORT_LABEL: Record<Sort, string> = { newest: "newest", oldest: "oldest", relevance: "relevance", replied: "most replied" };
 const SORT_TIP: Record<Sort, string> = { newest: "newest first", oldest: "oldest first", relevance: "best text match (bm25-like)", replied: "most replies" };
 
-const store = new HttpStore(new URL("data/", location.href).href);
+const VER = document.querySelector<HTMLMetaElement>('meta[name="vrg-ver"]')?.content ?? "";
+const store = new HttpStore(new URL("data/", location.href).href, VER);
 let eng: Engine, thumbs: Thumbs;
 let state: State = readUrl();
 let cmpDraft: string[] = [...state.cmp];

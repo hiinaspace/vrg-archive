@@ -33,6 +33,8 @@ const res = await build({
 const files = Object.keys(res.metafile.outputs).map((p) => p.split("/").pop());
 const js = files.find((f) => f.endsWith(".js")), css = files.find((f) => f.endsWith(".css"));
 let html = readFileSync("src/index.html", "utf8");
+const ver = arg("--ver");
+if (ver) html = html.replace("<head>", `<head>\n<meta name="vrg-ver" content="${ver}">`);
 html = html.replace("__JS__", "assets/" + js).replace("__CSS__", css ? `<link rel="stylesheet" href="assets/${css}">` : "");
 writeFileSync(out + "/index.html", html);
 console.log("web bundle:", js, css, createHash("sha1").update(html).digest("hex").slice(0, 8));
